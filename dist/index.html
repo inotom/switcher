@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>@inotom/switcher Demo</title>
+<style>
+.switcher-layer {
+  overflow: hidden;
+  transition: height .3s;
+}
+</style>
+</head>
+<body>
+  <h1>@inotom/switcher Demo</h1>
+  <div>
+    <a data-switcher-handle="a" href="#">Handle A</a>
+  </div>
+
+  <div class="switcher-layer" data-switcher-layer="a">
+    <p><b>Layer A</b>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+  <hr>
+
+  <div>
+    <a data-switcher-handle="b" href="#">Handle B</a>
+  </div>
+
+  <div class="switcher-layer" data-switcher-layer="b">
+    <p><b>Layer B</b>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+  <hr>
+
+  <div>
+    <a data-switcher-handle="c" href="#" is-active>Handle C</a>
+  </div>
+
+  <div class="switcher-layer" data-switcher-layer="c" is-active>
+    <p><b>Layer C</b>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+<script src="switcher.min.js"></script>
+<script>
+  Switcher.switcher();
+</script>
+</body>
+</html>
