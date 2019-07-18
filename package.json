@@ -1,6 +1,6 @@
 {
   "name": "@inotom/switcher",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/switcher.umd.js",
   "cdn": "dist/switcher.min.js",
@@ -33,6 +33,7 @@
     "@babel/preset-env": "7.5.4",
     "babel-eslint": "10.0.2",
     "babel-loader": "8.0.6",
+    "core-js": "3.1.4",
     "eslint": "6.0.1",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
