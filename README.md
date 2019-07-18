@@ -1,6 +1,6 @@
 # @inotom/switcher
 
-Change Layer element height by handle element click.
+Change layer element height by handle element click.
 
 
 ## Demo
@@ -35,7 +35,7 @@ npm install -D @inotom/switcher
 import { Switcher } from '@inotom/switcher';
 
 window.addEventListener('load', () => {
-  Switcher();
+  switcher();
 });
 ```
 
@@ -53,6 +53,24 @@ The `is-active` attribute of these elements are toggled , when clicking `*[data-
 <div data-switcher-layer="SOME_KEY">
   Content
 </div>
+```
+
+
+## Options
+
+| name | type | defaults | description |
+|------|------|----------|-------------|
+| `changeHeight` | `Boolean` | `true` | Change layer element height value |
+| `activeAttribute` | `String` | `is-active` | Active handle/layer element attribute name |
+
+
+### Example options
+
+```js
+switcher({
+  changeHeight: false,
+  activeAttribute: 'is-custom-active',
+});
 ```
 
 

@@ -2,27 +2,33 @@
 
 const ACTIVE_ATTR = 'is-active';
 
-const setNextAttribute = (el, nextAttr) => {
+const setNextAttribute = (activeAttribute, el, nextAttr) => {
   if (nextAttr) {
-    el.setAttribute(ACTIVE_ATTR, '');
+    el.setAttribute(activeAttribute, '');
   } else {
-    el.removeAttribute(ACTIVE_ATTR);
+    el.removeAttribute(activeAttribute);
   }
 };
 
-const updateLayer = (elHandle, elLayer) => {
-  const nextAttr = !elHandle.hasAttribute(ACTIVE_ATTR);
-  setNextAttribute(elHandle, nextAttr);
-  setNextAttribute(elLayer, nextAttr);
+const updateLayer = (activeAttribute, elHandle, elLayer) => {
+  const nextAttr = !elHandle.hasAttribute(activeAttribute);
+  setNextAttribute(activeAttribute, elHandle, nextAttr);
+  setNextAttribute(activeAttribute, elLayer, nextAttr);
 };
 
-const updateHeight = (elLayer, staticHeight) => {
-  const isActive = elLayer.hasAttribute(ACTIVE_ATTR);
+const updateHeight = (activeAttribute, changeHeight, elLayer, staticHeight) => {
+  if (!changeHeight) {
+    return;
+  }
+  const isActive = elLayer.hasAttribute(activeAttribute);
   const height = isActive ? `${staticHeight}px` : '0px';
   elLayer.style.height = height;
 };
 
-export const switcher = () => {
+export const switcher = ({
+  changeHeight = true,
+  activeAttribute = ACTIVE_ATTR,
+} = {}) => {
   const elHandles = document.querySelectorAll('[data-switcher-handle]');
 
   Array.from(elHandles, elHandle => {
@@ -37,11 +43,11 @@ export const switcher = () => {
 
       elHandle.addEventListener('click', e => {
         e.preventDefault();
-        updateLayer(elHandle, elLayer);
-        updateHeight(elLayer, staticHeight);
+        updateLayer(activeAttribute, elHandle, elLayer);
+        updateHeight(activeAttribute, changeHeight, elLayer, staticHeight);
       });
 
-      updateHeight(elLayer, staticHeight);
+      updateHeight(activeAttribute, changeHeight, elLayer, staticHeight);
     }
   });
 };
