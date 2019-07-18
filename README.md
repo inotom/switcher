@@ -32,7 +32,7 @@ npm install -D @inotom/switcher
 ### ES module
 
 ```js
-import { Switcher } from '@inotom/switcher';
+import { switcher } from '@inotom/switcher';
 
 window.addEventListener('load', () => {
   switcher();
