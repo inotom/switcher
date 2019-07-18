@@ -56,6 +56,24 @@ The `is-active` attribute of these elements are toggled , when clicking `*[data-
 ```
 
 
+Overwrite `changeHeight: true` option for each elemetns, by `data-switcher-change-height="true"` data attribute.
+
+```html
+<div>
+  <a data-switcher-handle="SOME_KEY" href="#">Handle</a>
+</div>
+<div data-switcher-layer="SOME_KEY" data-switcher-change-height="true">
+  Content
+</div>
+<script src="switcher.min.js"></script>
+<script>
+  Switcher.switcher({
+    changeHeight: false,
+  });
+</script>
+```
+
+
 ## Options
 
 | name | type | defaults | description |

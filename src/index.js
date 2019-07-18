@@ -17,9 +17,17 @@ const updateLayer = (activeAttribute, elHandle, elLayer) => {
 };
 
 const updateHeight = (activeAttribute, changeHeight, elLayer, staticHeight) => {
-  if (!changeHeight) {
+  let enableUpdate = changeHeight;
+
+  const selfChangeHeight = elLayer.dataset.swicherChangeHeight;
+  if (selfChangeHeight && selfChangeHeight === 'true') {
+    enableUpdate = true;
+  }
+
+  if (!enableUpdate) {
     return;
   }
+
   const isActive = elLayer.hasAttribute(activeAttribute);
   const height = isActive ? `${staticHeight}px` : '0px';
   elLayer.style.height = height;
