@@ -20,8 +20,8 @@ const updateHeight = (activeAttribute, changeHeight, elLayer, staticHeight) => {
   let enableUpdate = changeHeight;
 
   const selfChangeHeight = elLayer.dataset.switcherChangeHeight;
-  if (selfChangeHeight && selfChangeHeight === 'true') {
-    enableUpdate = true;
+  if (selfChangeHeight) {
+    enableUpdate = selfChangeHeight === 'true';
   }
 
   if (!enableUpdate) {
