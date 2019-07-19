@@ -1,6 +1,6 @@
 {
   "name": "@inotom/switcher",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "main": "dist/switcher.umd.js",
   "cdn": "dist/switcher.min.js",
