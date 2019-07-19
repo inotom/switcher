@@ -56,7 +56,7 @@ The `is-active` attribute of these elements are toggled , when clicking `*[data-
 ```
 
 
-Overwrite `changeHeight: true` option for each elemetns, by `data-switcher-change-height="true"` data attribute.
+Overwrite `changeHeight` option for each elemetns, by `data-switcher-change-height` data attribute.
 
 ```html
 <div>
