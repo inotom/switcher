@@ -46,6 +46,8 @@ Set a same string key to `data-switcher-handle` and `data-switcher-layer` attrib
 
 The `is-active` attribute of these elements are toggled , when clicking `*[data-switcher-handle]` element.
 
+The `is-active` attribute of these elements are removed, when clicking `*[data-switcher-close]` element.
+
 ```html
 <div>
   <a data-switcher-handle="SOME_KEY" href="#">Handle</a>

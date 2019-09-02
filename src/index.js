@@ -10,13 +10,18 @@ const setNextAttribute = (activeAttribute, el, nextAttr) => {
   }
 };
 
+const closeLayer = (activeAttribute, elHandle, elLayer) => {
+  setNextAttribute(activeAttribute, elHandle, false);
+  setNextAttribute(activeAttribute, elLayer, false);
+};
+
 const updateLayer = (activeAttribute, elHandle, elLayer) => {
   const nextAttr = !elHandle.hasAttribute(activeAttribute);
   setNextAttribute(activeAttribute, elHandle, nextAttr);
   setNextAttribute(activeAttribute, elLayer, nextAttr);
 };
 
-const updateHeight = (activeAttribute, changeHeight, elLayer, staticHeight) => {
+const isEnableUpdate = (changeHeight, elLayer) => {
   let enableUpdate = changeHeight;
 
   const selfChangeHeight = elLayer.dataset.switcherChangeHeight;
@@ -24,7 +29,19 @@ const updateHeight = (activeAttribute, changeHeight, elLayer, staticHeight) => {
     enableUpdate = selfChangeHeight === 'true';
   }
 
-  if (!enableUpdate) {
+  return enableUpdate;
+};
+
+const closeHeight = (activeAttribute, changeHeight, elLayer) => {
+  if (!isEnableUpdate(changeHeight, elLayer)) {
+    return;
+  }
+
+  elLayer.style.height = '0px';
+};
+
+const updateHeight = (activeAttribute, changeHeight, elLayer, staticHeight) => {
+  if (!isEnableUpdate(changeHeight, elLayer)) {
     return;
   }
 
@@ -53,6 +70,17 @@ export const switcher = ({
         e.preventDefault();
         updateLayer(activeAttribute, elHandle, elLayer);
         updateHeight(activeAttribute, changeHeight, elLayer, staticHeight);
+      });
+
+      const elCloses = document.querySelectorAll(
+        `[data-switcher-close='${key}']`
+      );
+      Array.from(elCloses, elClose => {
+        elClose.addEventListener('click', e => {
+          e.preventDefault();
+          closeLayer(activeAttribute, elHandle, elLayer);
+          closeHeight(activeAttribute, changeHeight, elLayer);
+        });
       });
 
       updateHeight(activeAttribute, changeHeight, elLayer, staticHeight);
